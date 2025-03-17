@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Price Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            display: grid;
+            grid-gap: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .input-summary {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mobile Phone Price Predictor</h1>
+        
+        <form action="/predict" method="post">
+            <div>
+                <label for="brand">Brand:</label>
+                <select id="brand" name="brand" required>
+                    <option value="">Select Brand</option>
+                    <option value="Apple">Apple</option>
+                    <option value="Samsung">Samsung</option>
+                    <option value="Xiaomi">Xiaomi</option>
+                    <option value="OnePlus">OnePlus</option>
+                    <option value="Oppo">Oppo</option>
+                    <option value="Vivo">Vivo</option>
+                    <option value="Realme">Realme</option>
+                    <option value="Nokia">Nokia</option>
+                    <option value="Motorola">Motorola</option>
+                    <option value="Asus">Asus</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="ram">RAM (GB):</label>
+                <input type="number" id="ram" name="ram" min="1" required>
+            </div>
+            
+            <div>
+                <label for="storage">Storage (GB):</label>
+                <input type="number" id="storage" name="storage" min="16" required>
+            </div>
+            
+            <div>
+                <label for="battery">Battery Capacity (mAh):</label>
+                <input type="number" id="battery" name="battery" min="2000" required>
+            </div>
+            
+            <div>
+                <label for="processor">Processor:</label>
+                <select id="processor" name="processor" required>
+                    <option value="">Select Processor</option>
+                    <option value="Apple A15">Apple A15</option>
+                    <option value="Apple A16">Apple A16</option>
+                    <option value="Snapdragon 695">Snapdragon 695</option>
+                    <option value="Snapdragon 888">Snapdragon 888</option>
+                    <option value="Snapdragon 8 Gen 2">Snapdragon 8 Gen 2</option>
+                    <option value="Dimensity 810">Dimensity 810</option>
+                    <option value="Dimensity 9000">Dimensity 9000</option>
+                    <option value="Helio G96">Helio G96</option>
+                    <option value="Kirin 9000">Kirin 9000</option>
+                    <option value="Exynos 2100">Exynos 2100</option>
+                </select>
+            </div>
+            
+            <button type="submit">Predict Price</button>
+        </form>
+        
+        {% if prediction %}
+        <div class="result">
+            {{ prediction }}
+            {% if input_data %}
+            <div class="input-summary">
+                {{ input_data }}
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
