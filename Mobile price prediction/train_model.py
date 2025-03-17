@@ -10,7 +10,7 @@ from sklearn.metrics import mean_absolute_error, r2_score
 import pickle
 
 # Load the dataset
-df = pd.read_csv('mobile_price_prediction_2.csv')
+df = pd.read_csv("Mobile price prediction\mobile_price_prediction_2.csv")
 
 # Separate features and target
 X = df.drop('Price (INR)', axis=1)
